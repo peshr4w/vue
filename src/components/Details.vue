@@ -1,6 +1,6 @@
 <template>
     <form class="m-4 rounded-2xl p-3 shadow">
-        <div class="form-group mb-2">
+        <div class="form-group mb-3">
             <label for="username" >Username</label>
             <input type="text" v-focus class="form-control shadow-none" id="username" :value="username" @input="$emit('update:username',$event.target.value )">
         </div>
