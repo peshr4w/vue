@@ -1,6 +1,9 @@
 RewriteEngine On
-RewriteBase /my-vue-app/
-RewriteRule ^index\.html$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
+RewriteBase /
+
+# If the request is not for a valid directory or file
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /my-vue-app/index.html [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Rewrite all requests to the subdirectory 'dist'
+RewriteRule ^(.*)$ dist/$1 [L]

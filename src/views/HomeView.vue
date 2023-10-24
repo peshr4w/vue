@@ -1,7 +1,7 @@
 
 
 <template>
-  
+  Home
 </template>
 <script>
 import axios from 'axios';
