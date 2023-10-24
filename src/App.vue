@@ -17,7 +17,7 @@
   </div>
 </template>
 <script lang="ts">
-import axios from "./axios";
+import axios from "axios";
 import { defineComponent } from "vue";
 import Details from "./components/details.vue";
 import Navbar from './components/navbar.vue'
