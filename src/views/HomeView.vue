@@ -25,8 +25,8 @@ export default{
       const email = ref('');
       const password =  ref('');
        const login = async()=>{
-        await axios.get('http://laravel.peshraw.xyz//sanctum/csrf-cookie')
-        await axios.post('http://laravel.peshraw.xyz//api/login', {email: email.value, password: password.value})
+        await axios.get('http://laravel.peshraw.xyz/sanctum/csrf-cookie')
+        await axios.post('http://laravel.peshraw.xyz/api/login', {email: email.value, password: password.value})
         .then(res =>{
           console.log(res.data)
         })
@@ -38,7 +38,7 @@ export default{
     },
   methods:{
     async auth(){
-      await axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie')
+      await axios.get('http://laravel.peshraw.xyz/sanctum/csrf-cookie')
       .then(res =>{
         console.log(res.data)
         console.log(document.cookie)
