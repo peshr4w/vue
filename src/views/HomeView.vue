@@ -25,8 +25,8 @@ export default{
       const email = ref('');
       const password =  ref('');
        const login = async()=>{
-        await axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie')
-        await axios.post('http://127.0.0.1:8000/api/login', {email: email.value, password: password.value})
+        await axios.get('http://laravel.peshraw.xyz//sanctum/csrf-cookie')
+        await axios.post('http://laravel.peshraw.xyz//api/login', {email: email.value, password: password.value})
         .then(res =>{
           console.log(res.data)
         })
