@@ -38,7 +38,7 @@ export default{
     },
   methods:{
     async auth(){
-      await axios.get('http://laravel.peshraw.xyz/sanctum/csrf-cookie')
+      await axios.get('https://laravel.peshraw.xyz/sanctum/csrf-cookie')
       .then(res =>{
         console.log(res.data)
         console.log(document.cookie)
