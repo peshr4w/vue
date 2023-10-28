@@ -14,43 +14,44 @@
     <div class="block mb-4">
      <button class="px-2 py-1 rounded-lg text-white bg-slate-900 hover:bg-slate-700">Login</button>
     </div>
+    <div>
+      <router-link to="/" class="text-xs text-slate-700">home</router-link>
+
+     <span class="text-xs text-slate-700">Or</span> <router-link to="/signup" class="text-xs text-slate-700">Create an account</router-link>
+    </div>
   </form>
 </div>
 </template>
 <script>
 import axios from 'axios';
 import {ref} from 'vue'
+import { useAuthStore } from '../stores/counter';
+import { useRouter } from 'vue-router';
 export default{
   setup() {
+    const router = useRouter()
+    const authStore = useAuthStore()
       const email = ref('');
       const password =  ref('');
+      axios.defaults.withCredentials = true
        const login = async()=>{
         await axios.get('https://laravel.peshraw.xyz/sanctum/csrf-cookie')
         await axios.post('https://laravel.peshraw.xyz/api/login', {email: email.value, password: password.value})
-        .then(res =>{
-          console.log(res.data)
-        })
-        .catch(err =>{
-          console.log(err)
-        });
+        
+         const {user}  = await axios.get('https://laravel.peshraw.xyz/api/user')
+         console.log(user)
+       }
+       const authenticate = (user)=>{
+           authStore.user = user
+           authStore.authenticated = true
        }
        return{login, email, password}
     },
   methods:{
-    async auth(){
-      await axios.get('https://laravel.peshraw.xyz/sanctum/csrf-cookie')
-      .then(res =>{
-        console.log(res.data)
-        console.log(document.cookie)
-      })
-      .catch(err =>{
-        console.log(err)
-      })
-    },
+    
     
   },
   mounted(){
-    this.auth()
    
   }
 }
